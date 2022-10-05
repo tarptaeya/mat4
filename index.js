@@ -51,6 +51,18 @@ export function multiply(a, b) {
   ];
 };
 
+export function perspectiveProjectionMatrix(fov, aspect, near = 0.1, far = 500) {
+  const f = 1 / Math.tan(0.5 * fov);
+  const rangeInv = 1.0 / (near - far);
+
+  return [
+    f / aspect, 0, 0, 0,
+    0, f, 0, 0,
+    0, 0, (near + far) * rangeInv, near * far * rangeInv * 2,
+    0, 0, -1, 0
+  ];
+}
+
 export function scaleMatrix(sx, sy, sz) {
   return [
     sx, 0, 0, 0,
