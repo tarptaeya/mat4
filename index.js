@@ -30,6 +30,31 @@ export function inverse(a) {
   ];
 };
 
+export function viewMatrix(eye, target, up) {
+  function cross(a, b) {
+    return [
+      a[1] * b[2] - a[2] * b[1],
+      a[2] * b[0] - a[0] * b[2],
+      a[0] * b[1] - a[1] * b[0],
+    ];
+  }
+
+  function normalize(a) {
+    const length = Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]);
+    return [a[0] / length, a[1] / length, a[2] / length];
+  }
+
+  const forward = normalize([eye[0] - target[0], eye[1] - target[1], eye[2] - target[2]])
+  const right = normalize(cross(up, forward));
+  up = normalize(cross(forward, right));
+  return inverse([
+    right[0], up[0], forward[0], pos[0],
+    right[1], up[1], forward[1], pos[1],
+    right[2], up[2], forward[2], pos[2],
+    0, 0, 0, 1
+  ]);
+}
+
 export function multiply(a, b) {
   return [
     a[0] * b[0] + a[1] * b[4] + a[2] * b[8] + a[3] * b[12],
