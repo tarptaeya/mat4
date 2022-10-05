@@ -48,9 +48,9 @@ export function viewMatrix(eye, target, up) {
   const right = normalize(cross(up, forward));
   up = normalize(cross(forward, right));
   return inverse([
-    right[0], up[0], forward[0], pos[0],
-    right[1], up[1], forward[1], pos[1],
-    right[2], up[2], forward[2], pos[2],
+    right[0], up[0], forward[0], eye[0],
+    right[1], up[1], forward[1], eye[1],
+    right[2], up[2], forward[2], eye[2],
     0, 0, 0, 1
   ]);
 }
