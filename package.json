@@ -1,0 +1,12 @@
+{
+  "name": "mat4",
+  "version": "0.0.1",
+  "description": "row major matrix library for high performance webgl apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["matrix", "webgl"],
+  "author": "Anmol Gautam <tarptaeya@gmail.com>",
+  "license": "ISC"
+}
